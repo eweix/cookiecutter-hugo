@@ -1,0 +1,7 @@
+{{ define "main" }}
+  {{ with .Site.Taxonomies.tags }}
+    {{ range . }}
+    <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} ({{ .Count }})</a>
+    {{ end }}
+  {{ end }}
+{{ end }}

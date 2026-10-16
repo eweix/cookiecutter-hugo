@@ -1,0 +1,33 @@
+{{ .Scratch.Set "dateMachine" "2006-01-02 15:04:05" }}
+{{ .Scratch.Set "dateHuman" "2006-01-02" }}
+{{ .Scratch.Set "action" "Posted" }}
+{{ if .PublishDate }}
+  {{ $dateMachine := .PublishDate.Format "2006-01-02 15:04:05" }}
+  {{ $dateHuman := .PublishDate.Format "2006-01-02" }}
+  {{ .Scratch.Set "dateMachine" $dateMachine }}
+  {{ .Scratch.Set "dateHuman" $dateHuman }}
+{{ else if .Date }}
+  {{ $dateMachine := .Date.Format "2006-01-02 15:04:05" }}
+  {{ $dateHuman := .Date.Format "2006-01-02" }}
+  {{ .Scratch.Set "dateMachine" $dateMachine }}
+  {{ .Scratch.Set "dateHuman" $dateHuman }}
+{{ else if .GitInfo }}
+  {{ $dateMachine := .GitInfo.AuthorDate.Format "2006-01-02 15:04:05" }}
+  {{ $dateHuman := .GitInfo.AuthorDate.Format "2006-01-02" }}
+  {{ .Scratch.Set "action" "Updated" }}
+  {{ .Scratch.Set "dateMachine" $dateMachine }}
+  {{ .Scratch.Set "dateHuman" $dateHuman }}
+{{ end }}
+
+
+<div>
+  <p>
+    <time class="dt-published" datetime="{{ .Scratch.Get "dateMachine" }}">
+      {{ .Scratch.Get "dateHuman" }}
+    </time>
+    {{- with .Page.GetTerms "tags" }}
+      /
+    {{ end }}
+
+  </p>
+</div>

@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+{{ if eq .Data.Term "TIL" }}
+  {{ $relatedTags := slice }}
+  {{ range (where .Site.RegularPages "Params.tags" "intersect" (slice "TIL")) }}
+      {{ $relatedTags = union $relatedTags .Params.tags }}
+  {{ end }}
+
+  {{ range $relatedTags }}
+    {{ if ne . "TIL" }}
+      <h2><a href="/{{ . }}">{{ strings.Title . }}</h2>
+      <ul>
+        {{ range where $.Site.RegularPages ".Params.tags" "intersect" (slice .) }}
+          <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ .Date.Format "2006-01-02" }}
+          </li>
+          {{ end }}
+      </ul>
+    {{ end }}
+  {{ end }}
+{{ else }}
+  <section class="h-entry">
+  <h1><a href="p-name u-url p-category">{{ .Title }}</a></h1>
+    <div class="e-content">
+    {{ .Content }}
+    </div>
+  </section>
+  <section>
+    <ul class="post-list h-feed">
+    {{ range .Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <time class="dt-published" datetime='{{ .Date.Format "2006-01-02 15:04:05"
+          }}'>{{ .Date.Format "2006-01-02" }}</time>
+      </li>
+    {{ end }}
+  </section>
+{{ end }}
+{{ end }}

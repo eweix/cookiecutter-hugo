@@ -1,0 +1,299 @@
+:root {
+  /* font families */
+  --serif:
+    'Palatino', 'Palatino Linotype', Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times,
+    Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --sans:
+    avenir next, avenir, -apple-system, BlinkMacSystemFont, segoe ui, helvetica neue, Adwaita Sans,
+    Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+  --mono:
+    IBM plex mono, IBM plex, fira code nerd font mono, fira code mono, fira code, Menlo, Consolas, Monaco, Adwaita Mono,
+    Liberation Mono, Lucida Console, monospace;
+
+  /* font sizes */
+  --font-size: 14pt;
+  --h1-size: 1.33em;
+  --h2-size: 1.16em;
+  --h-size: 1em;
+  --code-size: 0.8em;
+
+  /* color palette */
+  color-scheme: light dark;
+  --text: light-dark(#0d0d0d, #fafafa);
+  --link: light-dark(#0d0d0d, #fafafa);
+  --bg: light-dark(#dadada, #1d1d1d);
+
+  /* page dimensions */
+  --page-width: 60rem;
+}
+
+* {
+  padding-bottom: 0px;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  scrollbar-gutter: stable both-edges;
+}
+
+body {
+  font-family: var(--serif);
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  font-size: var(--font-size);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+main {
+  display: block;
+  margin: 0 auto 0 auto;
+  max-width: var(--page-width);
+  position: relative;
+  padding: 1em;
+}
+
+header {
+  padding: 0;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+  max-width: var(--page-width);
+  margin: 0 auto 0 auto;
+}
+
+footer {
+  font-size: var(--font-size);
+  padding: 5px 5px;
+  border-top: 1px solid;
+  max-width: var(--page-width);
+  margin: auto auto 0 auto;
+}
+
+footer p {
+  padding: 0px;
+  margin: 0.1em 0 0 0;
+}
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.full-bleed > *, pre > * {
+  max-width: min(70rem, 90%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  text-decoration: underline;
+  color: var(--link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+blockquote {
+  font-size: 0.9em;
+  margin: 0.5em 1em;
+}
+
+blockquote cite {
+  display: block;
+  font-style: normal;
+  text-align: right;
+}
+
+header,
+footer,
+h1,
+h2,
+ {
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+h1, 
+h2 {
+  font-family: var(--sans);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: var(--h1-size);
+}
+h2 {
+  font-size: var(--h2-size);
+}
+
+h1 a,
+h2 a,
+header a {
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+}
+
+nav ul li {
+  padding: 5px;
+}
+
+img {
+  display: block;
+  margin: 2em auto;
+  max-width: 100%;
+  max-height: 40em;
+}
+
+svg {
+  fill: var(--text);
+}
+
+table {
+  margin: 1em auto;
+  justify-content: center;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+thead {
+  border-bottom: 1px solid;
+}
+
+th {
+  padding: 0 50px;
+  text-align: left;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--text);
+}
+
+article > hr {
+  max-width: 20em;
+}
+
+details {
+  border: 1px dashed var(--text);
+  max-width: 100%;
+  padding: 0.5em;
+}
+
+code {
+  font-size: var(--code-size);
+  max-width: 100%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+pre {
+  padding: 9px;
+  width: 100%;
+  border: black 1px solid;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+pre code {
+  font-size: 13px;
+}
+
+code > .line > .ln {
+  margin-right: 5px;
+}
+
+/* style section lists */
+
+.tabular {
+  padding-left: 0;
+  list-style: none;
+}
+
+.tabular li {
+  display: grid;
+  padding: 3px 0;
+}
+
+.col1 li {
+  grid-template-columns: 1fr;
+}
+
+.col2 li {
+  grid-template-columns: 3fr 5em;
+}
+
+.col3 li {
+  grid-template-columns: 2fr 1fr 5em;
+}
+
+.tabular li * {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+a.tag {
+  text-decoration: none;
+  border: 1px solid #cdcdcd;
+  padding: 0.2rem;
+  border-radius: 3px;
+}
+
+/* change menu on small screens */
+@media screen and (max-width: 900px) {
+  html {
+    max-width: 100vw;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.125em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+
+  img {
+    max-width: 90%;
+  }
+
+  .full-bleed, pre {
+    width: inherit;
+    margin: 0;
+  }
+
+  .full-bleed > *, pre > * {
+    max-width: inherit;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  nav {
+    display: none !important;
+  }
+}

@@ -1,0 +1,30 @@
+export PORT := "1313"
+_help:
+  @just --list
+
+# build html from markdown
+[group("lifecycle")]
+build:
+  hugo --cleanDestinationDir
+
+# remove html pages
+[group("lifecycle")]
+clean:
+  rm -rf ./public
+
+# start and open local server
+[group("server")]
+dev:
+  just serve & sleep 1 & just open
+
+# start server
+[group("server")]
+serve:
+  hugo serve --buildFuture --buildDrafts --cleanDestinationDir --port $PORT
+
+# open the local server
+[group("server")]
+open:
+  open https://localhost:$PORT
+
+

@@ -1,0 +1,23 @@
+{{- if .IsBlock -}}
+  <figure class="full-bleed">
+    <img
+      src="{{ .Destination | safeURL }}"
+      {{- with
+        .Text
+      }}
+        alt="{{ . }}"
+      {{ end -}}
+    />
+    {{- with .Title }}
+      <figcaption>{{ . }}</figcaption>
+    {{ end -}}
+  </figure>
+{{- else -}}
+  <div class="full-bleed">
+    <img
+      src="{{ .Destination | safeURL }}"
+      {{- with .Text }}alt="{{ . }}"{{ end -}}
+      {{- with .Title }}title="{{ . }}"{{ end -}}
+    />
+  </div>
+{{- end -}}

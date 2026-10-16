@@ -1,0 +1,7 @@
+# baseURL = 'https://{{ cookiecutter.baseurl }}/'
+baseURL = 'https://example.org/'
+locale = 'en-us'
+title = '{{ cookiecutter.project_name }}'
+
+[services.rss]
+  limit = -1

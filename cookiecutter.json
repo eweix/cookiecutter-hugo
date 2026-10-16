@@ -2,5 +2,13 @@
   "project_name": "Hugo Website",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
   "baseurl": "example.org",
-  "author": "Anonymous"
+  "author": "Anonymous",
+  "_copy_without_render": [
+    "*.css",
+    "*.html",
+    "*.md",
+    "*.xml",
+    "*.lock",
+    "Justfile"
+  ]
 }

@@ -1,5 +1,5 @@
-locale = 'en-us'
 baseURL = 'https://{{ cookiecutter.baseurl }}/'
+locale = '{{ cookiecutter.locale }}'
 title = '{{ cookiecutter.project_name }}'
 
 [services.rss]
